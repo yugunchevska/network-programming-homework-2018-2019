@@ -17,7 +17,7 @@ You should be able to upload a random file to the server.
 
 # How to submit the homework
 You should fork the repository and choose one of the tasks to implement.
-Your source code should be in package** com.fmi.mpr.hw.chat** or **com.fmi.mpr.hw.http** depending on the task you have choosen.
+Your source code should be in package **com.fmi.mpr.hw.chat** or **com.fmi.mpr.hw.http** depending on the task you have choosen.
 Inside the repository create a file named with your faculcy number. For example **81XXX**.
 
 The end date of the homework is: **02 January 2019**.
