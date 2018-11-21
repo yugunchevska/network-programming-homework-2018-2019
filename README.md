@@ -16,10 +16,23 @@ Example with POST method:
 You should be able to upload a random file to the server.
 
 # How to submit the homework
-You should fork the repository and choose one of the tasks to implement.
+
+In order to submit your homework you must have github account. If you don't have github account you have to create one. Next you have to download the version control system - GIT.
+You can do it from the official web site https://git-scm.com/downloads. 
+
+After you did the aforementioned steps you are ready to proceed.
+
+In order to create copy of the repository you should **fork** (Click Fork button in the top right corner) the repository.  By forking the repository you allow me to view the history of your work. (**Uploading the whole project functionality at once will count as cheating**).
+
+Now after you have copied the repository you can download it locally and start working on the task you have choosen.
+
+In order to download the project locally you need to use the following command:
+git clone https://github.com/YOUR_USERNAME/network-programming-homework-2018-2019.git
+
+Inside the repository you forked, create a file named with your faculcy number. For example **81XXX**.
+
 Your source code should be in package **com.fmi.mpr.hw.chat** or **com.fmi.mpr.hw.http** depending on the task you have choosen.
-Inside the repository create a file named with your faculcy number. For example **81XXX**.
+
+For more information how to upload code from your local repository to the master repository you can use the following link https://git-scm.com/docs.
 
 The end date of the homework is: **02 January 2019**.
-
-You can find git documentation here https://git-scm.com/docs.
