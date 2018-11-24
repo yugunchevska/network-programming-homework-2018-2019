@@ -29,7 +29,7 @@ Now after you have copied the repository you can download it locally and start w
 In order to download the project locally you need to use the following command:
 git clone https://github.com/YOUR_USERNAME/network-programming-homework-2018-2019.git
 
-Inside the repository you forked, create a file named with your faculcy number. For example **81XXX**.
+Inside the repository you forked, create a file named with your faculty number. For example **81XXX**.
 
 Your source code should be in package **com.fmi.mpr.hw.chat** or **com.fmi.mpr.hw.http** depending on the task you have choosen.
 
