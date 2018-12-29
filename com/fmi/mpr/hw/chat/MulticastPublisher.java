@@ -11,33 +11,43 @@ public class MulticastPublisher {
 	private static final int MULTICAST_PORT = 4321;
 	private static final String MULTICAST_IP = "230.0.0.0";
 	
+	private String name = new String();
+	private boolean running = true;
+	
 	public void sendMessages() throws IOException {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please, enter your name:");
+		this.name = sc.nextLine();
+		
+		MulticastReceiver receiver = new MulticastReceiver(name);
+		Thread thread = new Thread(receiver);
+		thread.start();
 		
 		DatagramSocket socket = null;
 		try {
 			socket = new DatagramSocket();
 			InetAddress group = InetAddress.getByName(MULTICAST_IP);
 						
-			while(true) {
-				byte[] receivedBytes = new byte[1024];
-			    DatagramPacket packet = new DatagramPacket(receivedBytes, receivedBytes.length);
-			    socket.receive(packet);
-			    String message = new String(packet.getData()).trim();
+			while(running) {
 				
-				byte[] bytes = message.getBytes();
-				packet = new DatagramPacket(bytes, bytes.length, group, MULTICAST_PORT);
+				System.out.println("Send your message:");
+				String message = sc.nextLine();
+				String msg = name + ": " + message;
+				byte[] bytes = msg.getBytes();
+				DatagramPacket packet = new DatagramPacket(bytes, bytes.length, group, MULTICAST_PORT);
 				socket.send(packet);
+				
+				if(message.equals("end")) {
+					running = false;
+				}
 			}
 		} finally {
+			sc.close();
+			
 			if(socket != null) {
 				socket.close();
 			}
 		}
-	}
-	
-	public static void main(String[] argv) throws IOException {
-		MulticastPublisher publisher = new MulticastPublisher();
-		publisher.sendMessages();
 	}
 
 }
