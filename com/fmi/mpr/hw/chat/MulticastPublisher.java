@@ -1,7 +1,6 @@
 package com.fmi.mpr.hw.chat;
 
 import java.io.IOException;
-import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.Scanner;
@@ -34,6 +33,11 @@ public class MulticastPublisher {
 				System.out.println("Type of the message:");
 				String type = sc.nextLine().toUpperCase();
 				
+				if(!type.equals("TEXT") && !type.equals("IMAGE") && !type.equals("VIDEO")) {
+					System.out.println("The type of the message is not clear. Try again.");
+					continue;
+				}
+				
 				System.out.println("Send your message:");
 				String message = sc.nextLine();
 				String msg = name + ": " + message;
@@ -42,13 +46,17 @@ public class MulticastPublisher {
 					MessageUtil.sendTextMessage(msg, group, MULTICAST_PORT, socket);
 				} else if(type.equals("IMAGE")) {
 					MessageUtil.sendImage(name, msg, group, MULTICAST_PORT, socket);
+				} else if(type.equals("VIDEO")) {
+					MessageUtil.sendVideo(name, msg, group, MULTICAST_PORT, socket);
 				}
 				    
 				if(message.equals("end")) {
 					running = false;
 				}
+				
+				Thread.sleep(400);
 			}
-		} catch(IOException e) {
+		} catch(IOException | InterruptedException e) {
 			System.out.println("Couldn't connect. Problem: " + e.getMessage());
 		} finally {
 			sc.close();
